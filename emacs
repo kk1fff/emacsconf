@@ -106,4 +106,4 @@
 (global-set-key [pause] 'toggle-current-window-dedication)
 
 ;; GNU GLOBAL
-(autoload 'gtags-mode "gtags" "" t)
+(require 'xgtags)
