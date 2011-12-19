@@ -64,11 +64,11 @@
 ; highlight 80 column
 (require 'highlight-80+)
 
-;; Cscope
-(require 'xcscope)
-(add-hook 'java-mode-hook (function cscope:hook))
+;; Cscope, commented out cause xgtags is in use.
+;(require 'xcscope)
+;(add-hook 'java-mode-hook (function cscope:hook))
 
-;; cedet
+;; cedet, comment out if there's a system cedet.
 ;(load-file "~/local/cedet/common/cedet.el")
 ;(global-ede-mode 1)                      ; Enable the Project management system
 ;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
@@ -84,8 +84,11 @@
 
 ;; Coding style
 ; Using google style
-; (require 'google-c-style)
-(setq c-default-style "java")
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+;; Customize coding style.
 (setq-default basic-offset 2)
 (setq-default tab-width 2)
 (setq-default tab-stop 2)
@@ -107,3 +110,8 @@
 
 ;; GNU GLOBAL
 (require 'xgtags)
+(add-hook 'c-mode-common-hook
+          (lambda () (xgtags-mode 1)))
+
+;; Use c++-mode as default mode of .h file
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
