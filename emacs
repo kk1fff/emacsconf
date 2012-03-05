@@ -69,13 +69,13 @@
 ;(add-hook 'java-mode-hook (function cscope:hook))
 
 ;; cedet, comment out if there's a system cedet.
-;(load-file "~/local/cedet/common/cedet.el")
-;(global-ede-mode 1)                      ; Enable the Project management system
-;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
-;(global-srecode-minor-mode 1)            ; Enable template insertion menu
+(load-file "~/local/cedet-1.0/common/cedet.el")
+(global-ede-mode 1)                      ; Enable the Project management system
+(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
+(global-srecode-minor-mode 1)            ; Enable template insertion menu
 
 ;; ecb
-;(require 'ecb)
+(require 'ecb)
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -115,3 +115,8 @@
 
 ;; Use c++-mode as default mode of .h file
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+
+;; Enable history
+(require 'recentf)
+(recentf-mode 1)
