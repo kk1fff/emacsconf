@@ -14,6 +14,7 @@
  )
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/ecb-2.40")
+(add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; highlight current line
 (global-hl-line-mode 1)
@@ -127,3 +128,15 @@
   "Major mode for editing Markdown files" t)
 
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+;; Python
+; Python Hook
+(add-hook 'python-mode-hook
+          (function (lambda ()
+                      (setq indent-tabs-mode nil
+                            tab-width 2))))
+
+;; Color scheme 
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-robin-hood)
