@@ -137,6 +137,6 @@
                             tab-width 2))))
 
 ;; Color scheme 
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-robin-hood)
+; (require 'color-theme)
+; (color-theme-initialize)
+; (color-theme-robin-hood)
