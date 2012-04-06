@@ -16,6 +16,9 @@
 (add-to-list 'load-path "~/.emacs.d/ecb-2.40")
 (add-to-list 'load-path "~/.emacs.d/themes")
 
+;; NXHtml mode
+; (load "~/.emacs.d/nxhtml/autostart.el")
+
 ;; highlight current line
 (global-hl-line-mode 1)
 
@@ -140,3 +143,10 @@
 ; (require 'color-theme)
 ; (color-theme-initialize)
 ; (color-theme-robin-hood)
+
+;; Popup kill ring.
+(require 'popup)
+(require 'pos-tip)
+(require 'popup-kill-ring)
+(global-set-key "\M-y" 'popup-kill-ring)
+(setq popup-kill-ring-interactive-insert t)
