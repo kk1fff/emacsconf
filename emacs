@@ -74,10 +74,10 @@
 ;(add-hook 'java-mode-hook (function cscope:hook))
 
 ;; cedet, comment out if there's a system cedet.
-(load-file "~/local/cedet-1.0/common/cedet.el")
-(global-ede-mode 1)                      ; Enable the Project management system
-(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
-(global-srecode-minor-mode 1)            ; Enable template insertion menu
+; (load-file "~/local/cedet/common/cedet.el")
+; (global-ede-mode 1)                      ; Enable the Project management system
+; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
+; (global-srecode-minor-mode 1)            ; Enable template insertion menu
 
 ;; ecb
 (require 'ecb)
@@ -150,3 +150,13 @@
 (require 'popup-kill-ring)
 (global-set-key "\M-y" 'popup-kill-ring)
 (setq popup-kill-ring-interactive-insert t)
+
+;; Add revert-all-buffers command.
+(defun revert-all-buffers ()
+    "Refreshes all open buffers from their respective files."
+    (interactive)
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (when (and (buffer-file-name) (not (buffer-modified-p)))
+          (revert-buffer t t t) )))
+    (message "Refreshed open files.") )
