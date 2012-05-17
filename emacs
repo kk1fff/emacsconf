@@ -3,7 +3,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40")
+  ;; '(ecb-options-version "2.40")
  '(inhibit-startup-screen t)
  '(recentf-max-saved-items 100))
 (custom-set-faces
@@ -13,7 +13,7 @@
   ;; If there is more than one, they won't work right.
  )
 (add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/ecb-2.40")
+;; (add-to-list 'load-path "~/.emacs.d/ecb-2.40")
 (add-to-list 'load-path "~/.emacs.d/themes")
 
 ;; NXHtml mode
@@ -80,7 +80,7 @@
 ; (global-srecode-minor-mode 1)            ; Enable template insertion menu
 
 ;; ecb
-(require 'ecb)
+; (require 'ecb)
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -129,8 +129,8 @@
 ;; Markdown
 (autoload 'markdown-mode "markdown-mode.el" 
   "Major mode for editing Markdown files" t)
-
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 ;; Python
 ; Python Hook
@@ -160,3 +160,8 @@
         (when (and (buffer-file-name) (not (buffer-modified-p)))
           (revert-buffer t t t) )))
     (message "Refreshed open files.") )
+
+;; scss mode
+; (add-to-list 'load-path (expand-file-name "~/.emacs.d/folder-where-you-put-scss-mode-el"))
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
