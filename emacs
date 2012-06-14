@@ -165,3 +165,9 @@
 ; (add-to-list 'load-path (expand-file-name "~/.emacs.d/folder-where-you-put-scss-mode-el"))
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+;; Clojure mode
+(require 'clojure-mode)
+
+;; Minimap
+(require 'minimap)
