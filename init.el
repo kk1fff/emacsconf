@@ -103,3 +103,6 @@
 ;; Enable history
 (require 'recentf)
 (recentf-mode 1)
+
+;; Enable js-mode when opening a jsm file
+(setq auto-mode-alist (cons '("\\.jsm" . js-mode) auto-mode-alist))
