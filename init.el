@@ -57,9 +57,14 @@
 
 ;; Coding style
 ;; Using google style
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; We're at Mozilla, so we don't use Google's style.
+; (require 'google-c-style)
+; (add-hook 'c-mode-common-hook 'google-set-c-style)
+; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+;; Mozilla's style
+(require 'mozilla-c-style)
+(add-hook 'c-mode-common-hook 'mozilla-c-mode-style-hook)
 
 ;; My additional style
 (setq-default basic-offset 2)
