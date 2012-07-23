@@ -3,6 +3,7 @@
 EMACSD=$HOME/.emacs.d
 INITEL=$EMACSD/init.el
 LOCALPACKAGE=$EMACSD/local_packages
+COLORTHEME=$EMACSD/color-theme
 TEMPDIR=/tmp/emacsconf_$$
 
 ##
@@ -27,6 +28,7 @@ mkdir -p $EMACSD
 
 echo "Load local packages"
 cp -r local_packages $LOCALPACKAGE
+cp -r color-theme $COLORTHEME
 
 ##
 ## Install Mozilla's coding style.
@@ -45,6 +47,7 @@ popd >> /dev/null
 ##
 echo "Building init.el"
 echo "(add-to-list 'load-path \"$LOCALPACKAGE\")" >> $INITEL
+echo "(add-to-list 'load-path \"$COLORTHEME\")" >> $INITEL
 cat init.el >> $INITEL
 
 ##

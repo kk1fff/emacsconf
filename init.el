@@ -106,3 +106,8 @@
 
 ;; Enable js-mode when opening a jsm file
 (setq auto-mode-alist (cons '("\\.jsm" . js-mode) auto-mode-alist))
+
+;; Load color theme
+(require 'color-theme)
+(setq color-theme-is-global t)
+(color-theme-tty-dark)
