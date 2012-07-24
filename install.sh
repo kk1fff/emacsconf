@@ -48,6 +48,7 @@ popd >> /dev/null
 echo "Building init.el"
 echo "(add-to-list 'load-path \"$LOCALPACKAGE\")" >> $INITEL
 echo "(add-to-list 'load-path \"$COLORTHEME\")" >> $INITEL
+echo "(add-to-list 'load-path \"$COLORTHEME/themes\")" >> $INITEL
 cat init.el >> $INITEL
 
 ##

@@ -4,7 +4,7 @@
 (package-initialize)
 (package-refresh-contents)
 
-(defvar my-packages '(minimap clojure-mode))
+(defvar my-packages '(clojure-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
