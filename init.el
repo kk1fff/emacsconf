@@ -109,7 +109,6 @@
 
 ;; Load color theme
 (require 'color-theme)
-(require 'color-theme-libraries)
 (color-theme-initialize)
 (color-theme-hober)
 
