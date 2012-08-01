@@ -124,3 +124,6 @@
 ;; Optional: set up a quick key to toggle nav
 (global-set-key [f8] 'nav-toggle)
 
+;; Popup global mark ring.
+(require 'popup-global-mark-ring)
+(global-set-key "\C-c\C-g" 'popup-global-mark-ring)
