@@ -113,7 +113,7 @@
 (color-theme-hober)
 
 ;; Load minimap
-(require 'minimap)
+; (require 'minimap)
 
 ;; gtags
 (require 'xgtags)
@@ -127,3 +127,11 @@
 ;; Popup global mark ring.
 (require 'popup-global-mark-ring)
 (global-set-key "\C-c\C-g" 'popup-global-mark-ring)
+
+;; Move to minibuffer
+(defun switch-to-minibuffer-window ()
+  "switch to minibuffer window (if active)"
+  (interactive)
+  (when (active-minibuffer-window)
+    (select-window (active-minibuffer-window))))
+(global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
