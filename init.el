@@ -30,7 +30,7 @@
 ;; disable toolbar
 (progn
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;  (menu-bar-mode -1)
+  (menu-bar-mode -1)
   (scroll-bar-mode -1)
 )
 (setq-default truncate-lines t)
