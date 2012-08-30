@@ -36,19 +36,19 @@
 (setq-default truncate-lines t)
 
 ;; [Additional Package] Use column indent
-; (require 'fill-column-indicator)
-; (setq fci-rule-width 1)
-; (setq fci-rule-color "black")
-; (add-hook 'after-change-major-mode-hook 'fci-mode)
-; (setq-default fill-column 80)
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "white")
+(add-hook 'after-change-major-mode-hook 'fci-mode)
+(setq-default fill-column 80)
 
 ;; Show line number
 (global-linum-mode 1)
 
 ;; highlight 80 column
-(require 'column-marker)
-(add-hook 'after-change-major-mode-hook
-          (lambda () (interactive) (column-marker-2 80)))
+; (require 'column-marker)
+; (add-hook 'after-change-major-mode-hook
+;          (lambda () (interactive) (column-marker-2 80)))
 
 ;; [Additional Package] Autocomplete
 (require 'auto-complete-config)
@@ -110,7 +110,7 @@
 ;; Load color theme
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-hober)
+(color-theme-kingsajz)
 
 ;; Load minimap
 ; (require 'minimap)
