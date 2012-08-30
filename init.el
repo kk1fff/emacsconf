@@ -110,7 +110,7 @@
 ;; Load color theme
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-kingsajz)
+(color-theme-tty-dark)
 
 ;; Load minimap
 ; (require 'minimap)
