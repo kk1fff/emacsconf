@@ -110,7 +110,7 @@
 ;; Load color theme
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-tty-dark)
+(color-theme-hober)
 
 ;; Load minimap
 ; (require 'minimap)
