@@ -39,20 +39,43 @@ wget http://hg.mozilla.org/users/jblandy_mozilla.com/mozilla-elisp/archive/tip.t
 tar zxf tip.tar.gz
 mv mozilla-elisp* mozilla-elisp
 cd mozilla-elisp
+echo "== Mozilla coding style files =="
+ls
+echo "============= End =============="
 cp *.el $LOCALPACKAGE
 popd >> /dev/null
+
+##
+## Install helm
+##
+echo "Install helm"
+pushd $TEMPDIR >> /dev/null
+git clone https://github.com/emacs-helm/helm.git 
+mv helm $LOCALPACKAGE/
+popd >> /dev/null
+
+##
+## Install helm-etags+
+##
+echo "Install helm-etags+"
+pushd $TEMPDIR >> /dev/null
+git clone https://github.com/jixiuf/helm-etags-plus
+mv helm-etags-plus/*.el $LOCALPACKAGE/helm
+popd >> /dev/null
+
 
 ##
 ## Write init.el for loading local packages.
 ##
 echo "Building init.el"
-echo "(add-to-list 'load-path \"$LOCALPACKAGE\")" >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")" >> $INITEL
-echo "(add-to-list 'load-path \"$COLORTHEME\")" >> $INITEL
-echo "(add-to-list 'load-path \"$COLORTHEME/themes\")" >> $INITEL
-cat init.el >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE\")"               >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")"  >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/helm\")"          >> $INITEL
+echo "(add-to-list 'load-path \"$COLORTHEME\")"                 >> $INITEL
+echo "(add-to-list 'load-path \"$COLORTHEME/themes\")"          >> $INITEL
+cat init.el                                                     >> $INITEL
 
 ##
 ## Cleanup temp directory.
 ##
-rm -r $TEMPDIR
+rm -rf $TEMPDIR

@@ -106,6 +106,7 @@
 
 ;; Enable js-mode when opening a jsm file
 (setq auto-mode-alist (cons '("\\.jsm" . js-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.sjs" . js-mode) auto-mode-alist))
 
 ;; Load color theme
 (require 'color-theme)
@@ -116,7 +117,7 @@
 ; (require 'minimap)
 
 ;; gtags
-(require 'xgtags)
+; (require 'xgtags)
 
 ;; emacs-nav
 (require 'nav)
@@ -135,3 +136,9 @@
   (when (active-minibuffer-window)
     (select-window (active-minibuffer-window))))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
+
+;; Use helm
+(require 'helm-config)
+
+;; helm-etags+
+(require 'helm-etags+)
