@@ -142,3 +142,6 @@
 
 ;; helm-etags+
 (require 'helm-etags+)
+
+;; id-utils
+(require 'idutils "id-utils")
