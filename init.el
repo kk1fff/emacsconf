@@ -117,7 +117,8 @@
 ; (require 'minimap)
 
 ;; gtags
-; (require 'xgtags)
+(require 'xgtags)
+(xgtags-mode 1)
 
 ;; emacs-nav
 (require 'nav)
@@ -137,11 +138,16 @@
     (select-window (active-minibuffer-window))))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 
-;; Use helm
-(require 'helm-config)
+;; Use helm-gtags by default
+; (require 'helm-config)
+; (helm-mode 1)
+
+;; Enable helm-gtags
+; (require 'helm-gtags)
+; (add-hook 'c-mode-hook (lambda () (helm-gtags-mode)))
 
 ;; helm-etags+
-(require 'helm-etags+)
+; (require 'helm-etags+)
 
 ;; id-utils
-(require 'idutils "id-utils")
+; (require 'idutils "id-utils")
