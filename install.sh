@@ -57,12 +57,20 @@ popd >> /dev/null
 ##
 ## Install helm-etags+
 ##
-echo "Install helm-etags+"
-pushd $TEMPDIR >> /dev/null
-git clone https://github.com/jixiuf/helm-etags-plus
-mv helm-etags-plus/*.el $LOCALPACKAGE/helm
-popd >> /dev/null
+# echo "Install helm-etags+"
+# pushd $TEMPDIR >> /dev/null
+# git clone https://github.com/jixiuf/helm-etags-plus
+# mv helm-etags-plus/*.el $LOCALPACKAGE/helm
+# popd >> /dev/null
 
+##
+## Install helm-gtags
+##
+echo "Install helm-gtags"
+pushd $TEMPDIR >> /dev/null
+git clone git://github.com/syohex/emacs-helm-gtags.git
+mv emacs-helm-gtags/*.el $LOCALPACKAGE/helm
+popd >> /dev/null
 
 ##
 ## Write init.el for loading local packages.
