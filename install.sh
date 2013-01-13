@@ -16,7 +16,7 @@ mkdir -p $TEMPDIR
 ## emacs.d and init script
 ##
 if [ -d ~/.emacs.d ]; then
-  echo "Delete original emacs.d folder" 
+  echo "Delete original emacs.d folder"
   rm -rf $EMACSD
 fi
 
@@ -50,7 +50,7 @@ popd >> /dev/null
 ##
 echo "Install helm"
 pushd $TEMPDIR >> /dev/null
-git clone https://github.com/emacs-helm/helm.git 
+git clone https://github.com/emacs-helm/helm.git
 mv helm $LOCALPACKAGE/
 popd >> /dev/null
 
