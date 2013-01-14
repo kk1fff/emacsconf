@@ -125,8 +125,27 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable js-mode when opening a jsm file
-(setq auto-mode-alist (cons '("\\.jsm" . js-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.sjs" . js-mode) auto-mode-alist))
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq auto-mode-alist (cons '("\\.jsm" . js2-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.sjs" . js2-mode) auto-mode-alist))
+(eval-after-load "js2-mode"
+  '(progn
+     (setq js2-missing-semi-one-line-override t)
+     (setq-default js2-basic-offset 2) ; 2 spaces for indentation (if you prefer 2 spaces instead of default 4 spaces for tab)
+
+     ;; following is from http://www.emacswiki.org/emacs/Js2Mode
+     (add-hook 'js2-post-parse-callbacks 'my-js2-parse-global-vars-decls)
+     (defun my-js2-parse-global-vars-decls ()
+       (let ((btext (replace-regexp-in-string
+                     ": *true" " "
+                     (replace-regexp-in-string "[\n\t ]+" " " (buffer-substring-no-properties 1 (buffer-size)) t t))))
+         (setq js2-additional-externs
+               (split-string
+                (if (string-match "/\\* *global *\\(.*?\\) *\\*/" btext) (match-string-no-properties 1 btext) "")
+                " *, *" t))
+         ))
+     ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load color theme

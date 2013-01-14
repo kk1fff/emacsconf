@@ -1,6 +1,20 @@
 (require 'package)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Install package from builtin repository
+
+;; Refresh
+(package-initialize)
+(package-refresh-contents)
+
+;; Define the package list.
+(defvar my-packages '(js2-mode))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set up 3rd party sources.
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
