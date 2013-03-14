@@ -232,6 +232,10 @@
     (select-window (active-minibuffer-window))))
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Using buffer menu instead of buffer list.
+(global-set-key "\C-x\C-b" 'buffer-menu)
+
 ;; Use helm-gtags by default
 ; (require 'helm-config)
 ; (helm-mode 1)
