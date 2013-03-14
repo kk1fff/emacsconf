@@ -236,6 +236,10 @@
 ;; Using buffer menu instead of buffer list.
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Set font size to 12pt
+(set-face-attribute 'default nil :height 120)
+
 ;; Use helm-gtags by default
 ; (require 'helm-config)
 ; (helm-mode 1)
