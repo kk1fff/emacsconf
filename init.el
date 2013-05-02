@@ -239,8 +239,8 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Set font size to 12pt
-(set-face-attribute 'default nil :height 120)
+;; Set font size to 10pt
+(set-face-attribute 'default nil :height 100)
 
 ;; Use helm-gtags by default
 ; (require 'helm-config)
