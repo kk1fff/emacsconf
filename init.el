@@ -268,6 +268,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Centered cursor
-(and
- (require 'centered-cursor-mode)
- (global-centered-cursor-mode +1))
+; (and
+;  (require 'centered-cursor-mode)
+;  (global-centered-cursor-mode +1))
