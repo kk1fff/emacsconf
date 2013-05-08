@@ -32,12 +32,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Install el-get package manager.
-(url-retrieve
- "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
- (lambda (s)
-   (let (el-get-master-branch)
-     (goto-char (point-max))
-     (eval-print-last-sexp))))
-
-;; Install lua-mode
-(el-get-install 'lua-mode)
+;(url-retrieve
+; "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+; (lambda (s)
+;   (let (el-get-master-branch)
+;     (goto-char (point-max))
+;     (eval-print-last-sexp))))
+;
+;;; Install lua-mode
+;(el-get-install 'lua-mode)
