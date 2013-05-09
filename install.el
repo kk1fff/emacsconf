@@ -41,3 +41,6 @@
 ;
 ;;; Install lua-mode
 ;(el-get-install 'lua-mode)
+
+;; close
+(kill-emacs)
