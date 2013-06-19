@@ -79,7 +79,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mozilla's style
 (require 'mozilla-c-style)
-(add-hook 'c-mode-common-hook 'mozilla-c-mode-style-hook)
+; (add-hook 'c-mode-common-hook 'mozilla-c-mode-style-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My additional style
