@@ -284,3 +284,7 @@
 
 (global-set-key (kbd "C-M-<right>") 'select-next-window)
 (global-set-key (kbd "C-M-<left>")  'select-previous-window)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dot mode
+(require 'graphviz-dot-mode)
