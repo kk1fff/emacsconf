@@ -414,7 +414,7 @@ The list of constant is available at http://www.research.att.com/~erg/graphviz\
     (define-key map "\r"       'electric-graphviz-dot-terminate-line)
     (define-key map "{"        'electric-graphviz-dot-open-brace)
     (define-key map "}"        'electric-graphviz-dot-close-brace)
-    (define-key map ";"        'electric-graphviz-dot-semi)
+;   (define-key map ";"        'electric-graphviz-dot-semi)
     (define-key map "\M-\t"    'graphviz-dot-complete-word)
     (define-key map "\C-\M-q"  'graphviz-dot-indent-graph)
     (define-key map "\C-cp"    'graphviz-dot-preview)
