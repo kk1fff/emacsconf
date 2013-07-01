@@ -240,7 +240,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set font size to 10pt
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 ;; Use helm-gtags by default
 ; (require 'helm-config)
