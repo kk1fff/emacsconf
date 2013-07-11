@@ -77,8 +77,8 @@ popd >> /dev/null
 ##
 echo "Install power line"
 pushd $TEMPDIR >> /dev/null
-git clone https://github.com/kk1fff/powerline.git
-mv powerline $LOCALPACKAGE
+git clone https://github.com/kk1fff/emacs-package-powerline.git
+mv emacs-package-powerline $LOCALPACKAGE
 popd >> /dev/null
 
 ##
