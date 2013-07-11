@@ -73,6 +73,15 @@ mv emacs-helm-gtags/*.el $LOCALPACKAGE/helm
 popd >> /dev/null
 
 ##
+## Install powerline
+##
+echo "Install power line"
+pushd $TEMPDIR >> /dev/null
+git clone https://github.com/kk1fff/powerline.git
+mv powerline $LOCALPACKAGE
+popd >> /dev/null
+
+##
 ## Write init.el for loading local packages.
 ##
 echo "Building init.el"
@@ -80,6 +89,7 @@ echo "(add-to-list 'load-path \"$LOCALPACKAGE\")"                     >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")"        >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/helm\")"                >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/nxhtml/autostart.el\")" >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/powerline\")"           >> $INITEL
 echo "(add-to-list 'load-path \"$COLORTHEME\")"                       >> $INITEL
 echo "(add-to-list 'load-path \"$COLORTHEME/themes\")"                >> $INITEL
 cat init.el                                                           >> $INITEL
