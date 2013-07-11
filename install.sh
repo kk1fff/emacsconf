@@ -3,7 +3,6 @@
 EMACSD=$HOME/.emacs.d
 INITEL=$EMACSD/init.el
 LOCALPACKAGE=$EMACSD/local_packages
-COLORTHEME=$EMACSD/color-theme
 TEMPDIR=/tmp/emacsconf_$$
 
 ##
@@ -28,7 +27,6 @@ mkdir -p $EMACSD
 
 echo "Load local packages"
 cp -r local_packages $LOCALPACKAGE
-cp -r color-theme $COLORTHEME
 
 ##
 ## Install Mozilla's coding style.
@@ -77,8 +75,17 @@ popd >> /dev/null
 ##
 echo "Install power line"
 pushd $TEMPDIR >> /dev/null
-git clone https://github.com/kk1fff/emacs-package-powerline.git
+git clone git://github.com/kk1fff/emacs-package-powerline.git
 mv emacs-package-powerline $LOCALPACKAGE
+popd >> /dev/null
+
+##
+## Install theme
+##
+echo "Install theme"
+pushd $TEMPDIR >> /dev/null
+git clone git://github.com/kk1fff/emacs-themes.git
+mv emacs-themes $LOCALPACKAGE
 popd >> /dev/null
 
 ##
@@ -89,9 +96,8 @@ echo "(add-to-list 'load-path \"$LOCALPACKAGE\")"                     >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")"        >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/helm\")"                >> $INITEL
 echo "(add-to-list 'load-path \"$LOCALPACKAGE/nxhtml/autostart.el\")" >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/powerline\")"           >> $INITEL
-echo "(add-to-list 'load-path \"$COLORTHEME\")"                       >> $INITEL
-echo "(add-to-list 'load-path \"$COLORTHEME/themes\")"                >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-powerline\")"   >> $INITEL
+echo "(add-to-list 'custom-theme-load-path \"$LOCALPACKAGE/emacs-themes\")" >> $INITEL
 cat init.el                                                           >> $INITEL
 
 ##
