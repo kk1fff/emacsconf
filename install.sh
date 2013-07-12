@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SCRIPT_DIR=$(dirname "${BASH_SOURCE}")
 EMACSD=$HOME/.emacs.d
 INITEL=$EMACSD/init.el
 LOCALPACKAGE=$EMACSD/local_packages
@@ -104,3 +105,27 @@ cat init.el                                                           >> $INITEL
 ## Cleanup temp directory.
 ##
 rm -rf $TEMPDIR
+
+##
+## Try to run install with emacs
+##
+EMACS=
+if [ 'Darwin' == "$(uname)" ]; then
+    # For OS X, we need to determine which emacs program we are using.
+    if [ -x '/Applications/Emacs.app/Contents/MacOS/Emacs' ]; then
+        EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+    fi
+else
+    EMACS=`which emacs`
+fi
+
+if [ -x "$EMACS" ]; then
+    $EMACS -q -l "$SCRIPT_DIR/install.el"
+    if [ 0 -eq $? ]; then
+        echo "Install successfully"
+    else
+        echo "Install emace failure"
+    fi
+else
+    echo "Unable to find emacs program, please execute \"emacs -q -l install.sh manually\""
+fi
