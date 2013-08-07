@@ -8,7 +8,7 @@
  '(variable-pitch ((t (:family "Sans Serif"))))
  '(escape-glyph ((t (:box (:line-width 1 :color "blue" :style released-button) :foreground "#a40000" :background "gold"))))
  '(minibuffer-prompt ((t (:foreground "#ffffff" :weight bold))))
- '(highlight ((t (:background "#103010" :underline "gray70"))))
+ '(highlight ((t (:background "DodgerBlue4"))))
  '(region ((t (:background "blue" :foreground "white"))))
  '(shadow ((((class color grayscale) (min-colors 88) (background light)) (:foreground "grey50")) (((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey70")) (((class color) (min-colors 8) (background light)) (:foreground "green")) (((class color) (min-colors 8) (background dark)) (:foreground "yellow"))))
  '(secondary-selection ((t (:foreground "black" :background "#8cc4ff"))))
