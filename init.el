@@ -6,7 +6,7 @@
   ; Recent file
   '(recentf-max-saved-items 100)
   ; Highlight color
-  '(highlight-symbol-foreground-color nil)
+  '(highlight-symbol-foreground-color "white")
   ; Symbol highlight color list
   '(highlight-symbol-colors
     '("purple1" "orange4" "SeaGreen4" "medium blue" "saddle brown"
