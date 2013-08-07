@@ -1,8 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customize variables
 (custom-set-variables
- '(inhibit-startup-screen t)
- '(recentf-max-saved-items 100))
+  ; Don't display start-up screen
+  '(inhibit-startup-screen t)
+  ; Recent file
+  '(recentf-max-saved-items 100)
+  ; Highlight color
+  '(highlight-symbol-foreground-color nil)
+  ; Symbol highlight color list
+  '(highlight-symbol-colors
+    '("purple1" "orange4" "SeaGreen4" "medium blue" "saddle brown"
+      "orange red" "magenta" "LavenderBlush4" "blue2" "PaleVioletRed3"
+      "tomato2")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
