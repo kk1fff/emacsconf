@@ -25,7 +25,7 @@
 (package-refresh-contents)
 
 ;; Define the package list.
-(defvar my-packages '())
+(defvar my-packages '(haskell-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
