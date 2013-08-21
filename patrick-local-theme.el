@@ -48,6 +48,6 @@
  '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
  '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
  '(powerline-inactive2 ((t (:inherit mode-line :foreground "gray75" :background "gray40"))))
- '(default ((t (:inherit nil :background "#102010" :foreground "LightCyan1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120)))))
+ '(default ((t (:inherit nil :background "gray15" :foreground "LightCyan1" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120)))))
 
 (provide-theme 'patrick-local)
