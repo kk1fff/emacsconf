@@ -107,19 +107,29 @@ git clone https://github.com/kk1fff/emacs-package-php-mode.git
 mv emacs-package-php-mode $LOCALPACKAGE
 popd >> /dev/null
 
+# ##
+# ## Install multi-web-mode mode
+# ##
+# echo "Install Multi Web Mode"
+# pushd $TEMPDIR >> /dev/null
+# git clone https://github.com/kk1fff/emacs-package-multi-web-mode.git
+# mv emacs-package-multi-web-mode $LOCALPACKAGE
+# popd >> /dev/null
+
 ##
 ## Write init.el for loading local packages.
 ##
 echo "Building init.el"
-echo "(add-to-list 'load-path \"$LOCALPACKAGE\")"                           >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")"              >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/helm\")"                      >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/nxhtml/autostart.el\")"       >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-powerline\")"   >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-jade-mode\")"   >> $INITEL
-echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-php-mode\")"    >> $INITEL
-echo "(add-to-list 'custom-theme-load-path \"$LOCALPACKAGE/emacs-themes\")" >> $INITEL
-cat init.el                                                                 >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE\")"                              >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-nav-49\")"                 >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/helm\")"                         >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/nxhtml/autostart.el\")"          >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-powerline\")"      >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-jade-mode\")"      >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-php-mode\")"       >> $INITEL
+echo "(add-to-list 'load-path \"$LOCALPACKAGE/emacs-package-multi-web-mode\")" >> $INITEL
+echo "(add-to-list 'custom-theme-load-path \"$LOCALPACKAGE/emacs-themes\")"    >> $INITEL
+cat init.el                                                                    >> $INITEL
 
 ##
 ## Cleanup temp directory.
