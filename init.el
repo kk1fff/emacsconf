@@ -283,8 +283,8 @@
   "Switch to the previous window"
   (interactive)
   (select-window (previous-window)))
-(global-set-key (kbd "C-M-<right>") 'select-next-window)
-(global-set-key (kbd "C-M-<left>")  'select-previous-window)
+(global-set-key (kbd "C-x o") 'select-next-window)
+(global-set-key (kbd "C-x O")  'select-previous-window)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Powerline
