@@ -14,15 +14,19 @@
       "tomato2")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Define my customized key mode, keys are defined with each function.
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight current line
 (global-hl-line-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; [Additional Package] F3 to highlight current symbol.
 (require 'highlight-symbol)
-(global-set-key (kbd "C-c /") 'highlight-symbol-at-point)
-(global-set-key (kbd "C-c ,") 'highlight-symbol-prev)
-(global-set-key (kbd "C-c .") 'highlight-symbol-next)
+(define-key my-keys-minor-mode-map (kbd "C-c ,") 'highlight-symbol-prev)
+(define-key my-keys-minor-mode-map (kbd "C-c .") 'highlight-symbol-next)
+(define-key my-keys-minor-mode-map (kbd "C-c /") 'highlight-symbol-at-point)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Show file full path in title bar
@@ -319,3 +323,14 @@
 ;                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
 ; (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 ; (multi-web-global-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Turn on my mode by default except in minibuffer.
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
+(my-keys-minor-mode 1)
+(defun my-minibuffer-setup-hook ()
+  (my-keys-minor-mode 0))
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
