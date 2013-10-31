@@ -107,14 +107,14 @@ git clone https://github.com/kk1fff/emacs-package-php-mode.git
 mv emacs-package-php-mode $LOCALPACKAGE
 popd >> /dev/null
 
-# ##
-# ## Install multi-web-mode mode
-# ##
-# echo "Install Multi Web Mode"
-# pushd $TEMPDIR >> /dev/null
-# git clone https://github.com/kk1fff/emacs-package-multi-web-mode.git
-# mv emacs-package-multi-web-mode $LOCALPACKAGE
-# popd >> /dev/null
+##
+## Install multi-web-mode mode
+##
+echo "Install Multi Web Mode"
+pushd $TEMPDIR >> /dev/null
+git clone https://github.com/kk1fff/emacs-package-multi-web-mode.git
+mv emacs-package-multi-web-mode $LOCALPACKAGE
+popd >> /dev/null
 
 ##
 ## Write init.el for loading local packages.
