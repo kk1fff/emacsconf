@@ -19,13 +19,18 @@
 ;; Set up 3rd party sources.
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 
 ;; Refresh
 (package-initialize)
 (package-refresh-contents)
 
 ;; Define the package list.
-(defvar my-packages '(haskell-mode))
+(defvar my-packages '(haskell-mode ; from marmalade
+                      lua-mode ; from melpa
+                      ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
