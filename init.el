@@ -326,6 +326,27 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Define resizing mode.
+
+(defvar iresize-mode-map 
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "H") 'enlarge-window)
+    (define-key m (kbd "h") 'shrink-window)
+    (define-key m (kbd "W") 'enlarge-window-horizontally)
+    (define-key m (kbd "w") 'shrink-window-horizontally)
+    (define-key m (kbd "C-g") 'iresize-mode)
+    m))
+
+(define-minor-mode iresize-mode
+  :initial-value nil
+  :lighter " IResize"
+  :keymap iresize-mode-map
+  :group 'iresize)
+
+(provide 'iresize)
+(define-key my-keys-minor-mode-map (kbd "C-c r") 'iresize-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Turn on my mode by default except in minibuffer.
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
