@@ -242,10 +242,6 @@
 ;; Using buffer menu instead of buffer list.
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Set font size to 10pt
-(set-face-attribute 'default nil :height 120)
-
 ;; Use helm-gtags by default
 ; (require 'helm-config)
 ; (helm-mode 1)
@@ -355,3 +351,8 @@
 (defun my-minibuffer-setup-hook ()
   (my-keys-minor-mode 0))
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Start server when emacs start-up
+(server-force-delete)
+(server-start)
