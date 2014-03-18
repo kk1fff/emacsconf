@@ -4,8 +4,8 @@
 (custom-theme-set-faces
  'patrick-local
  '(cursor ((t (:background "dark goldenrod"))))
- '(fixed-pitch ((t (:family "Monospace"))))
- '(variable-pitch ((t (:family "Sans Serif"))))
+ '(fixed-pitch ((t (:family "Source Code Pro"))))
+ '(variable-pitch ((t (:family "Source Code Pro"))))
  '(escape-glyph ((t (:box (:line-width 1 :color "blue" :style released-button) :foreground "#a40000" :background "gold"))))
  '(minibuffer-prompt ((t (:foreground "white" :background "black" :weight bold))))
  '(highlight ((t (:background "DodgerBlue3"))))
@@ -48,6 +48,6 @@
  '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
  '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
  '(powerline-inactive2 ((t (:inherit mode-line :foreground "gray75" :background "gray40"))))
- '(default ((t (:inherit nil :background "cyan4" :foreground "azure" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100)))))
+ '(default ((t (:inherit nil :background "#003030" :foreground "#c0c0c0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100)))))
 
 (provide-theme 'patrick-local)
