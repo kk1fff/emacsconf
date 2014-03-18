@@ -16,7 +16,7 @@
  '(font-lock-builtin-face ((t (:foreground "MediumOrchid1"))))
  '(font-lock-comment-delimiter-face ((t (:inherit (font-lock-comment-face) :foreground "orange1"))))
  '(font-lock-comment-face ((t (:slant italic :foreground "DarkOrange1"))))
- '(font-lock-constant-face ((t (:foreground "turquoise4" :weight bold))))
+ '(font-lock-constant-face ((t (:foreground "cyan2" :weight bold))))
  '(font-lock-doc-face ((t (:inherit (font-lock-string-face)))))
  '(font-lock-function-name-face ((t (:foreground "#a49090"))))
  '(font-lock-keyword-face ((t (:foreground "SeaGreen2"))))
