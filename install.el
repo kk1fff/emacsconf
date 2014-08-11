@@ -28,11 +28,11 @@
 (package-refresh-contents)
 
 ;; Define the package list.
-(defvar my-packages '(haskell-mode ; from marmalade
-                      lua-mode ; from melpa
-                      ))
+(defvar pkg-3party '(haskell-mode ; from marmalade
+                     lua-mode ; from melpa
+                     ))
 
-(dolist (p my-packages)
+(dolist (p pkg-3party)
   (when (not (package-installed-p p))
     (package-install p)))
 
