@@ -356,3 +356,10 @@
 ;; Start server when emacs start-up
 (server-force-delete)
 (server-start)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Semantic mode
+(semantic-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(global-semantic-stickyfunc-mode 1)
+(global-semantic-highlight-func-mode 1)
