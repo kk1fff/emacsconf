@@ -31,7 +31,7 @@
  '(button ((t (:inherit (link)))))
  '(link ((t (:foreground "DodgerBlue2" :underline t))))
  '(link-visited ((t (:inherit link :foreground "SlateBlue4" :underline t))))
- '(header-line ((t (:inherit mode-line :background "grey20" :foreground "grey90" :box nil))))
+ '(header-line ((t (:inherit mode-line :background "#FFFFBD" :foreground "grey90" :box nil))))
  '(tooltip ((t (:foreground "black" :background "lightyellow" :inherit (variable-pitch)))))
  '(mode-line ((t (:box nil :foreground "gray10" :background "gray70"))))
  '(mode-line-buffer-id ((t (:underline "red" :weight bold))))
