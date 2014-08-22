@@ -24,8 +24,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; [Additional Package] F3 to highlight current symbol.
 (require 'highlight-symbol)
-(define-key my-keys-minor-mode-map (kbd "C-c ,") 'highlight-symbol-prev)
-(define-key my-keys-minor-mode-map (kbd "C-c .") 'highlight-symbol-next)
+(define-key my-keys-minor-mode-map (kbd "C-c <") 'highlight-symbol-prev)
+(define-key my-keys-minor-mode-map (kbd "C-c >") 'highlight-symbol-next)
 (define-key my-keys-minor-mode-map (kbd "C-c /") 'highlight-symbol-at-point)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -165,8 +165,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; gtags
-(require 'gtags)
-(gtags-mode 1)
+;; (require 'gtags)
+;; (gtags-mode 1)
 
 ; Enabling single file update.
 (defun gtags-root-dir ()
@@ -363,3 +363,8 @@
 (global-semantic-idle-scheduler-mode 1)
 (global-semantic-stickyfunc-mode 1)
 (global-semantic-highlight-func-mode 1)
+(global-semantic-idle-summary-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ggtags
+(ggtags-mode 1)

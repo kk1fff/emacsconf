@@ -8,7 +8,8 @@
 (package-refresh-contents)
 
 ;; Define the package list.
-(defvar my-packages '(js2-mode
+(defvar my-packages '(ggtags
+                      js2-mode
                       rainbow-mode))
 
 (dolist (p my-packages)
