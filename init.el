@@ -205,9 +205,16 @@
 ;; Using buffer menu instead of buffer list.
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
-;; Use helm-gtags by default
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; helm
 (require 'helm-config)
 (helm-mode 1)
+;; Display helm in new vertically separated window.
+(setq helm-display-function
+      (lambda (buf)
+        (split-window-vertically)
+        (other-window 1)
+        (switch-to-buffer buf)))
 
 ;; Enable helm-gtags
 ; (require 'helm-gtags)
