@@ -1,8 +1,9 @@
 # Install
 
-    ./install.sh
-    emacs -q -l install.el
+    python install.py
 
 # Requirement
 
-Emacs24 and later version.
+* Emacs24 or later version.
+* python 2.7
+
