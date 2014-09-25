@@ -157,6 +157,42 @@ class GitPackageSimple(GitBasedPackage):
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}\")".format(target));
 
+class GitPackageSimpleAndMake(GitBasedPackage):
+    def __init__(self, name, repo):
+        GitBasedPackage.__init__(self, name, repo)
+
+    def post_install(self, target, init_el_handler):
+        try:
+            self._make(target)
+        except Exception as e:
+            raise e
+        init_el_handler.append_line(
+            "(add-to-list 'load-path \"{}\")".format(target));
+
+    def _make(self, target):
+        print "Making..."
+        makeproc = subprocess.Popen(['make'],
+                                    cwd=target,
+                                    stdout = subprocess.PIPE,
+                                    stderr = subprocess.PIPE)
+        buf = ""
+        while True:
+            fd = select.select([makeproc.stdout.fileno(),
+                                makeproc.stderr.fileno()],
+                               [], [])
+            for f in fd[0]:
+                if f == makeproc.stdout.fileno():
+                    buf = buf + makeproc.stdout.readline()
+                if f == makeproc.stderr.fileno():
+                    buf = buf + makeproc.stderr.readline()
+            r = makeproc.poll()
+            if r != None:
+                if r != 0:
+                    raise Exception(
+                        "make exited with {}, output:\n {}".format(r, buf))
+                break
+
+
 class GitThemePackage(GitBasedPackage):
     def __init__(self, name, repo):
         GitBasedPackage.__init__(self, name, repo)
@@ -249,10 +285,10 @@ class Installer:
 
 
 packages = [
-    GitPackageSimple("helm",
-                     "https://github.com/emacs-helm/helm.git"),
-    GitPackageSimple("helm-gtags",
-                     "git://github.com/syohex/emacs-helm-gtags.git"),
+    GitPackageSimpleAndMake("helm",
+                            "https://github.com/emacs-helm/helm.git"),
+#   GitPackageSimple("helm-gtags",
+#                    "git://github.com/syohex/emacs-helm-gtags.git"),
     GitPackageSimple("powerline",
                      "git://github.com/kk1fff/emacs-package-powerline.git"),
     GitPackageSimple("jade-mode",
