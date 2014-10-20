@@ -350,5 +350,9 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'js2-mode 'js-mode)
               (ggtags-mode 1))))
+
 (global-set-key (kbd "C-c k") 'ggtags-find-file)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; keybinds
+(global-set-key (kbd "C-x o") 'ff-find-other-file)
