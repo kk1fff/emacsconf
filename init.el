@@ -205,6 +205,8 @@
 ;; Using buffer menu instead of buffer list.
 (global-set-key "\C-x\C-b" 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
+(require 'ibuf-ext)
+(add-to-list 'ibuffer-never-show-predicates "^\\*")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; helm
@@ -348,4 +350,5 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'js2-mode 'js-mode)
               (ggtags-mode 1))))
+(global-set-key (kbd "C-c k") 'ggtags-find-file)
 
