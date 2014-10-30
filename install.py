@@ -297,6 +297,8 @@ packages = [
                      "https://github.com/kk1fff/emacs-package-php-mode.git"),
     GitPackageSimple("multi-web-mode",
                      "https://github.com/kk1fff/emacs-package-multi-web-mode.git"),
+    GitPackageSimple("indent-guide-mode",
+                     "https://github.com/zk-phi/indent-guide.git"),
     MozillaCStyle(),
     LocalPackage(),
     GitThemePackage("emacs-theme",
