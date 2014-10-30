@@ -339,6 +339,12 @@
 (global-semantic-idle-summary-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; subword mode
+(subword-mode 1)
+
+
+
+;; -----------------------------------------------------------------------------
 ;; Load packages. Package initialization must be written after this.
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -350,9 +356,15 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'js2-mode 'js-mode)
               (ggtags-mode 1))))
-
 (global-set-key (kbd "C-c k") 'ggtags-find-file)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-c =") 'er/expand-region)
+
+
+;; -----------------------------------------------------------------------------
 ;; keybinds
-(global-set-key (kbd "C-x o") 'ff-find-other-file)
+(global-set-key (kbd "C-c o") 'ff-find-other-file)
+(global-set-key (kbd "C-c f") 'helm-imenu)

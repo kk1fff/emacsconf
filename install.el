@@ -31,6 +31,7 @@
 ;; Define the package list.
 (defvar pkg-3party '(haskell-mode ; from marmalade
                      lua-mode ; from melpa
+                     expand-region
                      ))
 
 (dolist (p pkg-3party)
