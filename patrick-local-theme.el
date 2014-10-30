@@ -44,6 +44,7 @@
  '(match ((t (:background "SkyBlue"))))
  '(next-error ((t (:background "SkyBlue" :inherit (region)))))
  '(query-replace ((t (:foreground "black" :background "white" :inherit (isearch)))))
+ '(indent-guide-face ((t (:foreground "gray40"))))
  '(powerline-active1 ((t (:inherit mode-line :background "gray20" :foreground "OliveDrab1"))))
  '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
  '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
