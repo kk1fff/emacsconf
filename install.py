@@ -40,11 +40,14 @@ class LocalPackage(Package):
     def install_package(self, target_prefix, init_el_handler):
         shutil.copytree('local_packages', target_prefix + "/local_packages")
         shutil.copytree('local_themes', target_prefix + "/local_themes")
+        shutil.copytree('auto-complete', target_prefix + "/auto-complete")
 
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/local_packages\")".format(target_prefix))
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/local_packages/emacs-nav-49\")".format(target_prefix))
+        init_el_handler.append_line(
+            "(add-to-list 'load-path \"{}/auto-complete\")".format(target_prefix))
         init_el_handler.append_line(
             "(add-to-list 'custom-theme-load-path \"{}/local_themes\")".format(target_prefix))
 
@@ -162,8 +165,10 @@ class GitPackageSimple(GitBasedPackage):
             "(add-to-list 'load-path \"{}\")".format(target));
 
 class GitPackageSimpleAndMake(GitBasedPackage):
-    def __init__(self, name, repo):
+    # expecting a list of arguments need to work with make in |extra_args|
+    def __init__(self, name, repo, extra_args = None):
         GitBasedPackage.__init__(self, name, repo)
+        self._extra_args = extra_args
 
     def post_install(self, target, init_el_handler):
         try:
@@ -175,7 +180,11 @@ class GitPackageSimpleAndMake(GitBasedPackage):
 
     def _make(self, target):
         print "Making..."
-        makeproc = subprocess.Popen(['make'],
+        cmd = ['make']
+        if self._extra_args != None:
+            cmd = cmd + self._extra_args
+
+        makeproc = subprocess.Popen(cmd,
                                     cwd=target,
                                     stdout = subprocess.PIPE,
                                     stderr = subprocess.PIPE)
@@ -195,7 +204,6 @@ class GitPackageSimpleAndMake(GitBasedPackage):
                     raise Exception(
                         "make exited with {}, output:\n {}".format(r, buf))
                 break
-
 
 class GitThemePackage(GitBasedPackage):
     def __init__(self, name, repo):
