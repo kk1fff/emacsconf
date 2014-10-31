@@ -39,10 +39,14 @@ class LocalPackage(Package):
 
     def install_package(self, target_prefix, init_el_handler):
         shutil.copytree('local_packages', target_prefix + "/local_packages")
+        shutil.copytree('local_themes', target_prefix + "/local_themes")
+
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/local_packages\")".format(target_prefix))
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/local_packages/emacs-nav-49\")".format(target_prefix))
+        init_el_handler.append_line(
+            "(add-to-list 'custom-theme-load-path \"{}/local_themes\")".format(target_prefix))
 
 class GitBasedPackage(Package):
     def __init__(self, name, repo):
@@ -199,7 +203,7 @@ class GitThemePackage(GitBasedPackage):
 
     def post_install(self, target, init_el_handler):
         init_el_handler.append_line(
-            "(add-to-list 'custom-theme-load-path \"{}\")".format(target));
+            "(add-to-list 'custom-theme-load-path \"{}\")".format(target))
 
 class HttpTarGzSimplePackage(TarGzHttpBasedPackage):
     def __init__(self, name, url):
@@ -300,9 +304,9 @@ packages = [
     GitPackageSimple("indent-guide-mode",
                      "https://github.com/zk-phi/indent-guide.git"),
     MozillaCStyle(),
-    LocalPackage(),
-    GitThemePackage("emacs-theme",
-                    "git://github.com/kk1fff/emacs-themes.git")
+    LocalPackage()
+#   GitThemePackage("emacs-theme",
+#                   "git://github.com/kk1fff/emacs-themes.git")
 ]
 
 if __name__ == '__main__':
