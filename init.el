@@ -344,6 +344,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; indent guide mode
+(require 'indent-guide)
 (indent-guide-global-mode)
 
 
