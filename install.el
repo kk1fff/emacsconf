@@ -32,6 +32,7 @@
 (defvar pkg-3party '(haskell-mode ; from marmalade
                      lua-mode ; from melpa
                      expand-region
+                     rust-mode
                      ))
 
 (dolist (p pkg-3party)
