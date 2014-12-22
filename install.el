@@ -33,6 +33,7 @@
                      lua-mode ; from melpa
                      expand-region
                      rust-mode
+                     ibuffer-vc
                      ))
 
 (dolist (p pkg-3party)
