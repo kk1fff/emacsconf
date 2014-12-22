@@ -372,10 +372,27 @@
 ;; ibuffer-vc-hook
 (add-hook 'ibuffer-hook
           (lambda ()
-            (ibuffer-vc-set-filter-groups-by-vc-root)
-            (unless (eq ibuffer-sorting-mode 'alphabetic)
-              (ibuffer-do-sort-by-alphabetic))))
+            (ibuffer-vc-set-filter-groups-by-vc-root)))
 
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (define-ibuffer-sorter pathname
+              "Sort the buffers by their pathnames."
+             (:description "Sort the buffers by their pathname.")
+             (string-lessp
+              (with-current-buffer (car a)
+                (or buffer-file-name
+                    (if (eq major-mode 'dired-mode)
+                        (expand-file-name dired-directory))
+                    ;; so that all non pathnames are at the end
+                    "~"))
+              (with-current-buffer (car b)
+                (or buffer-file-name
+                    (if (eq major-mode 'dired-mode)
+                        (expand-file-name dired-directory))
+                    ;; so that all non pathnames are at the end
+                    "~"))))
+            (ibuffer-do-sort-by-pathname)))
 
 ;; -----------------------------------------------------------------------------
 ;; keybinds
