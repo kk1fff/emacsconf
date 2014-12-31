@@ -10,7 +10,8 @@
 ;; Define the package list.
 (defvar my-packages '(ggtags
                       js2-mode
-                      rainbow-mode))
+                      rainbow-mode
+                      ))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -34,6 +35,8 @@
                      expand-region
                      rust-mode
                      ibuffer-vc
+                     yasnippet
+                     emacs-eclim
                      ))
 
 (dolist (p pkg-3party)
