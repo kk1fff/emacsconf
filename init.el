@@ -368,8 +368,47 @@
 (require 'expand-region)
 (global-set-key (kbd "C-c =") 'er/expand-region)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ibuffer-vc-hook
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (define-ibuffer-sorter pathname
+              "Sort the buffers by their pathnames."
+             (:description "Sort the buffers by their pathname.")
+             (string-lessp
+              (with-current-buffer (car a)
+                (or buffer-file-name
+                    (if (eq major-mode 'dired-mode)
+                        (expand-file-name dired-directory))
+                    ;; so that all non pathnames are at the end
+                    "~"))
+              (with-current-buffer (car b)
+                (or buffer-file-name
+                    (if (eq major-mode 'dired-mode)
+                        (expand-file-name dired-directory))
+                    ;; so that all non pathnames are at the end
+                    "~"))))
+            (ibuffer-do-sort-by-pathname)))
 
 ;; -----------------------------------------------------------------------------
 ;; keybinds
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 (global-set-key (kbd "C-c f") 'helm-imenu)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Rust
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Yasnippet
+(yas-global-mode 1)
