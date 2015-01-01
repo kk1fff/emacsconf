@@ -37,6 +37,7 @@
                      ibuffer-vc
                      yasnippet
                      emacs-eclim
+                     popup
                      ))
 
 (dolist (p pkg-3party)

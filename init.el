@@ -73,12 +73,6 @@
 ;          (lambda () (interactive) (column-marker-2 80)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; [Additional Package] Autocomplete
-(require 'auto-complete-config)
-(ac-config-default)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coding style
 ;; Using google style
 ;; We're at Mozilla, so we don't use Google's style.
@@ -110,14 +104,6 @@
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Popup kill ring.
-(require 'popup)
-(require 'pos-tip)
-(require 'popup-kill-ring)
-(global-set-key "\M-y" 'popup-kill-ring)
-(setq popup-kill-ring-interactive-insert t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add revert-all-buffers command.
@@ -186,11 +172,6 @@
 (nav-disable-overeager-window-splitting)
 ;; Optional: set up a quick key to toggle nav
 (global-set-key [f8] 'nav-toggle)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Popup global mark ring.
-(require 'popup-global-mark-ring)
-(global-set-key "\C-c\C-g" 'popup-global-mark-ring)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Move to minibuffer
@@ -353,6 +334,19 @@
 ;; Load packages. Package initialization must be written after this.
 (setq package-enable-at-startup nil)
 (package-initialize)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; popup-kill-ring
+(require 'pos-tip)
+(require 'popup-kill-ring)
+(global-set-key "\M-y" 'popup-kill-ring)
+(setq popup-kill-ring-interactive-insert t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; autocomplete
+(require 'auto-complete-config)
+(ac-config-default)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ggtags

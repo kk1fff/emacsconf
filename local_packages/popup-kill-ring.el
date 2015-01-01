@@ -4,6 +4,7 @@
 
 ;; Author: khiker <khiker.mail+elisp@gmail.com>
 ;; Keywords: popup, kill-ring, pos-tip
+;; Package-Requires: ((pos-tip "0.4.5") (popup "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -57,6 +58,8 @@
 ;;
 
 ;;; ChangeLog:
+;;
+;; (2013/08/10) fixed a bug when C-g sroked in popup-kill-ring, by lynnux
 ;;
 ;; * 0.2.8 (2011/06/10)
 ;;   Added the new variable `popup-kill-ring-last-used-move-first'.  If
@@ -293,7 +296,7 @@ and `pos-tip.el'"
           ;; If `C-g' was typed, clear the inserted string. (7 is `C-g'.)
           (when (and popup-kill-ring-interactive-insert
                      (numberp last-input-event)
-                     (= last-input-event ? ))
+                     (= last-input-event ?\C-g ))
             (popup-kill-ring-clear-inserted)))))))
 
 (defun popup-kill-ring-pos-tip-show (str pos)
