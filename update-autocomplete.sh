@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEMP=$(mktemp -d)
+TEMP=$(mktemp -d -t tmp)
 BASE=$PWD
 
 cd $TEMP

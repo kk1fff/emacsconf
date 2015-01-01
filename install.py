@@ -76,26 +76,10 @@ class GitBasedPackage(Package):
         self.post_install(target, init_el_handler)
 
     def _do_git_clone(self, repo_dir):
-        gitproc = subprocess.Popen(['git', 'clone', self._repo,
-                                    repo_dir],
-                                   stdout = subprocess.PIPE,
-                                   stderr = subprocess.PIPE)
-        buf = ""
-        while True:
-            fd = select.select([gitproc.stdout.fileno(),
-                                gitproc.stderr.fileno()],
-                               [], [])
-            for f in fd[0]:
-                if f == gitproc.stdout.fileno():
-                    buf = buf + gitproc.stdout.readline()
-                if f == gitproc.stderr.fileno():
-                    buf = buf + gitproc.stderr.readline()
-            r = gitproc.poll()
-            if r != None:
-                if r != 0:
-                    raise Exception(
-                        "git exited with {}, output:\n {}".format(r, buf))
-                break
+        if os.system("git clone \"{}\" \"{}\"".
+                     format(self._repo, repo_dir)) != 0:
+            raise Exception("git failure")
+
 
     def pre_install(self, target, init_el_handler):
         pass
@@ -184,26 +168,13 @@ class GitPackageSimpleAndMake(GitBasedPackage):
         if self._extra_args != None:
             cmd = cmd + self._extra_args
 
-        makeproc = subprocess.Popen(cmd,
-                                    cwd=target,
-                                    stdout = subprocess.PIPE,
-                                    stderr = subprocess.PIPE)
-        buf = ""
-        while True:
-            fd = select.select([makeproc.stdout.fileno(),
-                                makeproc.stderr.fileno()],
-                               [], [])
-            for f in fd[0]:
-                if f == makeproc.stdout.fileno():
-                    buf = buf + makeproc.stdout.readline()
-                if f == makeproc.stderr.fileno():
-                    buf = buf + makeproc.stderr.readline()
-            r = makeproc.poll()
-            if r != None:
-                if r != 0:
-                    raise Exception(
-                        "make exited with {}, output:\n {}".format(r, buf))
-                break
+        cwd = os.getcwd()
+        os.chdir(target)
+        r = os.system(" ".join(map(lambda x: "\"{}\"".format(x), cmd)))
+        os.chdir(cwd)
+
+        if r != 0:
+            raise Exception("Fail executing {}".format(cmd))
 
 class GitThemePackage(GitBasedPackage):
     def __init__(self, name, repo):
@@ -277,24 +248,9 @@ class Installer:
 
     def run_install_lisp_script(self):
         print "Run installation script:"
-        p = subprocess.Popen([self._path_of_emacs, '-q', '-l', 'install.el'],
-                             stdout = subprocess.PIPE,
-                             stderr = subprocess.PIPE)
-        while True:
-            fd = select.select([p.stdout.fileno(),
-                                p.stderr.fileno()],
-                               [], [])
-            for f in fd[0]:
-                if f == p.stdout.fileno():
-                    sys.stdout.write(p.stdout.readline())
-                if f == p.stderr.fileno():
-                    sys.stderr.write(p.stderr.readline())
-            r = p.poll()
-            if r != None:
-                if r != 0:
-                    raise Exception("emacs exited with {}.".format(r))
-                break
-
+        if os.system("\"{}\" -q -l install.el".
+                     format(self._path_of_emacs)) != 0:
+            raise Exception("Failure executing installation script")
 
 packages = [
     GitPackageSimpleAndMake("helm",
