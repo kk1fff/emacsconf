@@ -1,5 +1,4 @@
-(deftheme patrick-local
-  "Created 2013-07-12.")
+(deftheme patrick-local "Local theme from Patrick.")
 
 (custom-theme-set-faces
  'patrick-local
@@ -49,6 +48,10 @@
  '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
  '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
  '(powerline-inactive2 ((t (:inherit mode-line :foreground "gray75" :background "gray40"))))
+ '(org-level-1 ((t (:font "Noto Serif 24" :foreground "plum1"))))
+ '(org-level-2 ((t (:font "Noto Serif 20" :foreground "orange1"))))
+ '(org-level-3 ((t (:font "Noto Serif 16" :foreground "cyan1"))))
+ '(org-level-4 ((t (:font "Noto Sans 16" :foreground "DeepSkyBlue1"))))
  '(default ((t (:inherit nil :background "#202020" :foreground "#c0c0c0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100)))))
 
 (provide-theme 'patrick-local)
