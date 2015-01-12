@@ -52,6 +52,16 @@
  '(org-level-2 ((t (:font "Noto Serif 18" :foreground "gray45"))))
  '(org-level-3 ((t (:font "Noto Serif 16" :foreground "gray55"))))
  '(org-level-4 ((t (:font "Noto Sans 14" :foreground "gray70"))))
- '(default ((t (:inherit nil :background "#202020" :foreground "#c0c0c0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100)))))
+ '(default ((t (:inherit nil
+                :font "Source Code Pro 10"
+                :background "#202020"
+                :foreground "#c0c0c0"
+                :inverse-video nil
+                :box nil
+                :strike-through nil
+                :overline nil
+                :underline nil
+                :slant normal
+                :weight normal)))))
 
 (provide-theme 'patrick-local)
