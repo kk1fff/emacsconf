@@ -2,28 +2,23 @@
 
 (custom-theme-set-faces
  'patrick-local
- '(cursor ((t (:background "white"))))
- '(fixed-pitch ((t (:family "Source Code Pro"))))
- '(variable-pitch ((t (:family "Source Code Pro"))))
  '(escape-glyph ((t (:box (:line-width 1 :color "blue" :style released-button) :foreground "#a40000" :background "gold"))))
  '(minibuffer-prompt ((t (:foreground "white" :background "#BF3249" :weight bold))))
- '(highlight ((t (:background "#364239"))))
- '(region ((t (:background "yellow1" :foreground "#3b3b3b"))))
  '(shadow ((((class color grayscale) (min-colors 88) (background light)) (:foreground "grey50")) (((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey70")) (((class color) (min-colors 8) (background light)) (:foreground "green")) (((class color) (min-colors 8) (background dark)) (:foreground "yellow"))))
  '(secondary-selection ((t (:foreground "black" :background "#8cc4ff"))))
  '(trailing-whitespace ((t (:background "#ef2929"))))
- '(font-lock-builtin-face ((t (:foreground "#8787C4"))))
+ '(font-lock-builtin-face ((t (:foreground "aquamarine1"))))
  '(font-lock-comment-delimiter-face ((t (:inherit (font-lock-comment-face) :foreground "#B09900" :background "#404040"))))
  '(font-lock-comment-face ((t (:slant italic :foreground "#827100" :background "#404040"))))
- '(font-lock-constant-face ((t (:foreground "#4F4FC9" :weight bold))))
+ '(font-lock-constant-face ((t (:foreground "PeachPuff1" :weight bold))))
  '(font-lock-doc-face ((t (:inherit (font-lock-string-face)))))
- '(font-lock-function-name-face ((t (:foreground "#A100B0"))))
- '(font-lock-keyword-face ((t (:foreground "#816CEB"))))
+ '(font-lock-function-name-face ((t (:foreground "dodger blue"))))
+ '(font-lock-keyword-face ((t (:foreground "cornflower blue"))))
  '(font-lock-negation-char-face ((t nil)))
  '(font-lock-preprocessor-face ((t (:inherit (font-lock-builtin-face)))))
  '(font-lock-regexp-grouping-backslash ((t (:inherit (bold)))))
  '(font-lock-regexp-grouping-construct ((t (:inherit (bold)))))
- '(font-lock-string-face ((t (:foreground "#838A00"))))
+ '(font-lock-string-face ((t (:foreground "white"))))
  '(font-lock-type-face ((t (:foreground "#C377E0"))))
  '(font-lock-variable-name-face ((t (:foreground "#A3C478"))))
  '(font-lock-warning-face ((t (:weight bold :foreground "red" :inherit (error)))))
@@ -44,18 +39,37 @@
  '(next-error ((t (:background "SkyBlue" :inherit (region)))))
  '(query-replace ((t (:foreground "black" :background "white" :inherit (isearch)))))
  '(indent-guide-face ((t (:foreground "gray40"))))
+
+ ;; Popup
+ ;; '(popup-face ((t (:foreground "gray50" :background "gray10"))))
+ ;; '(popup-selection-face ((t (:foreground "while"
+ ;;                             :background "PaleGreen4"))))
+ ;; '(popup-menu-selection-face ((t (:foreground "gray50" :background "while"))))
+
+ ;; Power line.
  '(powerline-active1 ((t (:inherit mode-line :background "gray20" :foreground "OliveDrab1"))))
  '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
  '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
  '(powerline-inactive2 ((t (:inherit mode-line :foreground "gray75" :background "gray40"))))
- '(org-level-1 ((t (:font "Noto Serif 20" :foreground "gray30"))))
- '(org-level-2 ((t (:font "Noto Serif 18" :foreground "gray45"))))
- '(org-level-3 ((t (:font "Noto Serif 16" :foreground "gray55"))))
- '(org-level-4 ((t (:font "Noto Sans 14" :foreground "gray70"))))
+
+ ;; org mode.
+ '(org-level-1 ((t (:font "Noto Serif 17"
+                    :foreground "medium sea green"))))
+ '(org-level-2 ((t (:font "Noto Serif 15"
+                    :foreground "aquamarine"))))
+ '(org-level-3 ((t (:font "Noto Serif 13"
+                    :foreground "cronflower blue"))))
+ '(org-level-4 ((t (:font "Noto Sans 12"
+                    :foreground "LightBlue 2"))))
+
+ ;; global setting.
+ '(region ((t (:background "RoyalBlue4"))))
+ '(cursor ((t (:background "white"))))
+ '(highlight ((t (:background "dark slate blue"))))
  '(default ((t (:inherit nil
-                :font "Source Code Pro 10"
+                :font "Fantasque Sans Mono 11"
                 :background "#202020"
-                :foreground "#c0c0c0"
+                :foreground "#d0d0d8"
                 :inverse-video nil
                 :box nil
                 :strike-through nil
