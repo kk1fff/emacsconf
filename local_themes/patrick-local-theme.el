@@ -66,8 +66,11 @@
  '(region ((t (:background "RoyalBlue4"))))
  '(cursor ((t (:background "white"))))
  '(highlight ((t (:background "dark slate blue"))))
+ '(default ((((type graphic))
+             (:font "Source Code Pro 10"))
+            (((type x))
+             (:font "Fantasque Sans Mono 11"))))
  '(default ((t (:inherit nil
-                :font "Fantasque Sans Mono 11"
                 :background "#202020"
                 :foreground "#d0d0d8"
                 :inverse-video nil
