@@ -27,11 +27,6 @@
  '(link-visited ((t (:inherit link :foreground "SlateBlue4" :underline t))))
  '(header-line ((t (:inherit mode-line :background "#383838" :foreground "grey90" :box nil))))
  '(tooltip ((t (:foreground "black" :background "lightyellow" :inherit (variable-pitch)))))
- '(mode-line ((t (:box nil :foreground "gray10" :background "gray70"))))
- '(mode-line-buffer-id ((t (:underline "red" :weight bold))))
- '(mode-line-emphasis ((t (:weight bold))))
- '(mode-line-highlight ((((class color) (min-colors 88)) (:box (:line-width 2 :color "grey40" :style released-button))) (t (:inherit (highlight)))))
- '(mode-line-inactive ((t (:box nil :weight light :foreground "#2e3436" :background "gray55" :inherit (mode-line)))))
  '(isearch ((t (:background "#ce5c00" :foreground "#ffffff"))))
  '(isearch-fail ((((class color) (min-colors 88) (background light)) (:background "RosyBrown1")) (((class color) (min-colors 88) (background dark)) (:background "red4")) (((class color) (min-colors 16)) (:background "red")) (((class color) (min-colors 8)) (:background "red")) (((class color grayscale)) (:foreground "grey")) (t (:inverse-video t))))
  '(lazy-highlight ((t (:background "#A83B00" :foreground "white"))))
@@ -39,6 +34,18 @@
  '(next-error ((t (:background "SkyBlue" :inherit (region)))))
  '(query-replace ((t (:foreground "black" :background "white" :inherit (isearch)))))
  '(indent-guide-face ((t (:foreground "gray40"))))
+
+ ;; Mode line
+ '(mode-line ((t (:box nil
+                  :foreground "gray85"
+                  :background "gray30"))))
+ '(mode-line-emphasis ((t (:weight bold))))
+ '(mode-line-highlight ((((class color) (min-colors 88)) (:box (:line-width 2 :color "grey40" :style released-button))) (t (:inherit (highlight)))))
+ '(mode-line-inactive ((t (:box nil
+                           :weight light
+                           :foreground "gray40"
+                           :background "gray20"
+                           :inherit (mode-line)))))
 
  ;; Popup
  ;; '(popup-face ((t (:foreground "gray50" :background "gray10"))))
@@ -57,7 +64,7 @@
                     :foreground "LightBlue 2"))))
 
  ;; global setting.
- '(region ((t (:background "RoyalBlue4"))))
+ '(region ((t (:background "gray70" :foreground "gray10"))))
  '(cursor ((t (:background "white"))))
  '(highlight ((t (:background "dark slate blue"))))
  '(default ((((type graphic))
