@@ -215,10 +215,6 @@
   t)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; Powerline
-(require 'powerline)
-(powerline-default-theme)
-
 ;; Dot mode
 (require 'graphviz-dot-mode)
 

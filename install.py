@@ -257,8 +257,6 @@ packages = [
                             "https://github.com/emacs-helm/helm.git"),
 #   GitPackageSimple("helm-gtags",
 #                    "git://github.com/syohex/emacs-helm-gtags.git"),
-    GitPackageSimple("powerline",
-                     "git://github.com/kk1fff/emacs-package-powerline.git"),
     GitPackageSimple("jade-mode",
                      "https://github.com/kk1fff/emacs-package-jade-mode.git"),
     GitPackageSimple("php-mode",

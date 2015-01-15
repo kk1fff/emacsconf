@@ -46,12 +46,6 @@
  ;;                             :background "PaleGreen4"))))
  ;; '(popup-menu-selection-face ((t (:foreground "gray50" :background "while"))))
 
- ;; Power line.
- '(powerline-active1 ((t (:inherit mode-line :background "gray20" :foreground "OliveDrab1"))))
- '(powerline-active2 ((t (:inherit mode-line :background "gray50"))))
- '(powerline-inactive1 ((t (:inherit mode-line :foreground "gray75" :background "gray45"))))
- '(powerline-inactive2 ((t (:inherit mode-line :foreground "gray75" :background "gray40"))))
-
  ;; org mode.
  '(org-level-1 ((t (:font "Noto Serif 17"
                     :foreground "medium sea green"))))
