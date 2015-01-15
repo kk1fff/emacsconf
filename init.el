@@ -339,3 +339,8 @@
 (defun my-minibuffer-setup-hook ()
   (my-keys-minor-mode 0))
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+
+;; Org mode.
+(add-hook 'org-mode-hook (lambda ()
+                           (setq truncate-lines nil)
+                           (visual-line-mode t)))
