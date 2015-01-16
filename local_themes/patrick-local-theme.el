@@ -59,18 +59,18 @@
  '(org-level-2 ((t (:font "Noto Serif 15"
                     :foreground "aquamarine"))))
  '(org-level-3 ((t (:font "Noto Serif 13"
-                    :foreground "cronflower blue"))))
+                    :foreground "cornflower blue"))))
  '(org-level-4 ((t (:font "Noto Sans 12"
-                    :foreground "LightBlue 2"))))
+                    :foreground "LightBlue2"))))
 
  ;; global setting.
  '(region ((t (:background "gray70" :foreground "gray10"))))
  '(cursor ((t (:background "white"))))
  '(highlight ((t (:background "dark slate blue"))))
- '(default ((((type graphic))
-             (:font "Source Code Pro 10"))
-            (((type x))
-             (:font "Fantasque Sans Mono 11"))))
+ '(default ((((type x))
+             (:font "Fantasque Sans Mono 11"))
+            (((type graphic))
+             (:font "Source Code Pro 10"))))
  '(default ((t (:inherit nil
                 :background "#202020"
                 :foreground "#d0d0d8"
