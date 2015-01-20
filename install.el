@@ -30,12 +30,12 @@
 (package-refresh-contents)
 
 ;; Define the package list.
-(defvar pkg-3party '(haskell-mode ; from marmalade
-                     lua-mode ; from melpa
+(defvar pkg-3party '(haskell-mode
+                     lua-mode
                      expand-region
                      rust-mode
                      ibuffer-vc
-                     yasnippet
+                     ; yasnippet
                      emacs-eclim
                      popup
                      ))

@@ -65,6 +65,9 @@
 (global-semantic-idle-breadcrumbs-mode 1)
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-summary-mode 1)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (setq ac-sources '(ac-source-semantic-raw))))
 
 ;; subword mode
 (global-subword-mode 1)
@@ -307,7 +310,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 ;; Yasnippet
-(yas-global-mode 1)
+;; (yas-global-mode 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
