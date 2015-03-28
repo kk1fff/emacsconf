@@ -72,6 +72,11 @@
 ;; subword mode
 (global-subword-mode 1)
 
+;; Easy PG
+(require 'epa-file)
+(epa-file-enable)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
