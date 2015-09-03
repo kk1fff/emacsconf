@@ -139,15 +139,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; Mozilla's style
-(require 'mozilla-c-style)
-
 ;; My additional style
-(setq-default basic-offset 2)
-(setq-default tab-width 2)
-(setq-default tab-stop 2)
+(setq-default basic-offset 4)
+(setq-default tab-width 4)
+(setq-default tab-stop 4)
 (setq-default indent-tabs-mode nil)
-(setq-default js-indent-level 2)
+(setq-default js-indent-level 4)
 (c-set-offset 'innamespace 0)
 
 ;; Use c++-mode as default mode of .h file
