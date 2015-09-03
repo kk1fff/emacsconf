@@ -150,6 +150,8 @@
 ;; Use c++-mode as default mode of .h file
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+;; Use octave mode as default of .m files
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
