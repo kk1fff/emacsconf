@@ -3,7 +3,7 @@
 ;; Customize variables
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(add-to-list 'exec-path "/usr/local/bin")
 
 (custom-set-variables
   ; Don't display start-up screen
