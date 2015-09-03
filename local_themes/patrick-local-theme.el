@@ -70,7 +70,7 @@
  '(default ((((type x))
              (:font "Fantasque Sans Mono 11"))
             (((type graphic))
-             (:font "Source Code Pro 10"))))
+             (:font "Fantasque Sans Mono 10"))))
  '(default ((t (:inherit nil
                 :background "#202020"
                 :foreground "#d0d0d8"
