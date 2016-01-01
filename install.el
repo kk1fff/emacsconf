@@ -38,6 +38,7 @@
                      ; yasnippet
                      emacs-eclim
                      popup
+                     go-mode
                      ))
 
 (dolist (p pkg-3party)
