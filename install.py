@@ -4,10 +4,10 @@ import os, tempfile, subprocess, select
 import shutil, sys, urllib, tarfile, traceback
 
 class InitElHandler:
-    """
-    Collect modifications that each package wants to make on init.el
-    """
     def __init__(self):
+        '''
+        Collect modifications that each package wants to make on init.el
+        '''
         self._line_buffer = []
 
     def append_line(self, line):
@@ -16,10 +16,10 @@ class InitElHandler:
     def get_all(self):
         return '\n'.join(self._line_buffer)
 
-    """
-    Accept a bunch of lines at one invocation
-    """
     def append_lines(self, lines):
+        '''
+        Accept a bunch of lines at one invocation
+        '''
         for line in lines:
             self.append_line(line)
 
@@ -44,8 +44,6 @@ class LocalPackage(Package):
 
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/local_packages\")".format(target_prefix))
-        init_el_handler.append_line(
-            "(add-to-list 'load-path \"{}/local_packages/emacs-nav-49\")".format(target_prefix))
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}/auto-complete\")".format(target_prefix))
         init_el_handler.append_line(
@@ -192,27 +190,8 @@ class HttpTarGzSimplePackage(TarGzHttpBasedPackage):
         init_el_handler.append_line(
             "(add-to-list 'load-path \"{}\")".format(target));
 
-class MozillaCStyle(HttpTarGzSimplePackage):
-    def __init__(self):
-        HttpTarGzSimplePackage.__init__(self,
-                                       "mozilla-c-style",
-                                       "http://hg.mozilla.org/users/jblandy_mozilla.com/mozilla-elisp/archive/tip.tar.gz")
-    def post_extract(self, repo_dir):
-        tmp_dir = tempfile.mkdtemp()
-        real_dir = repo_dir + "/" + os.listdir(repo_dir)[0]
-        shutil.move(real_dir, tmp_dir + "/d")
-        shutil.rmtree(repo_dir)
-        shutil.move(tmp_dir + "/d", repo_dir)
-        shutil.rmtree(tmp_dir)
-
 class Installer:
-    def __init__(self,
-                 target_dir = os.environ['HOME'] + '/.emacs.d'):
-        if os.uname()[0] == "Darwin":
-            self._path_of_emacs = "/Applications/Emacs.app/Contents/MacOS/Emacs"
-        else:
-            self._path_of_emacs = "emacs"
-        self._tmp_dir = tempfile.mkdtemp(prefix='emacs')
+    def __init__(self, target_dir):
         self._target_dir = target_dir
         self._loaded_pkgs = None
         self._init_el_handler = InitElHandler()
@@ -234,7 +213,7 @@ class Installer:
                 traceback.print_exc()
 
     def install_init_el(self):
-        init_el = open(self._target_dir + "/init.el", "w")
+        init_el = open(os.path.join(self._target_dir + "init.el"), "w")
         src = open("init.el", "r")
         init_el.write(self._init_el_handler.get_all())
         init_el.write("\n")
@@ -246,33 +225,19 @@ class Installer:
         init_el.close()
         src.close()
 
-    def run_install_lisp_script(self):
-        print "Run installation script:"
-        if os.system("\"{}\" -q -l install.el".
-                     format(self._path_of_emacs)) != 0:
-            raise Exception("Failure executing installation script")
-
 packages = [
-    GitPackageSimpleAndMake("helm",
-                            "https://github.com/emacs-helm/helm.git"),
-#   GitPackageSimple("helm-gtags",
-#                    "git://github.com/syohex/emacs-helm-gtags.git"),
-    GitPackageSimple("jade-mode",
-                     "https://github.com/kk1fff/emacs-package-jade-mode.git"),
-    GitPackageSimple("php-mode",
-                     "https://github.com/kk1fff/emacs-package-php-mode.git"),
     GitPackageSimple("multi-web-mode",
                      "https://github.com/kk1fff/emacs-package-multi-web-mode.git"),
-    GitPackageSimple("indent-guide-mode",
-                     "https://github.com/zk-phi/indent-guide.git"),
+    GitPackageSimple("highlight-indentation",
+                     "https://github.com/antonj/Highlight-Indentation-for-Emacs.git"),
     LocalPackage()
-#   GitThemePackage("emacs-theme",
-#                   "git://github.com/kk1fff/emacs-themes.git")
 ]
 
-if __name__ == '__main__':
-    installer = Installer()
+def main():
+    installer = Installer('emacs.d/loc_pkg')
     installer.reset_target_dir()
     installer.install_package(packages)
     installer.install_init_el()
-    installer.run_install_lisp_script()
+
+if __name__ == '__main__':
+    main()
