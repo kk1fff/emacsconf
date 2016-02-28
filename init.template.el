@@ -95,7 +95,7 @@
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (message "Package %s missing, installing..." p)
-      (when (not (init-ed))
+      (when (not init-ed)
         (add-to-list 'package-archives
                      '("marmalade" . "http://marmalade-repo.org/packages/") t)
         (add-to-list 'package-archives
