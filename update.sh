@@ -50,9 +50,6 @@ cp -r misc_scripts $TARGET/loc_pkg/misc
 # Themes
 cp -r themes $TARGET/loc_themes
 
-# install script
-cp install.el $TARGET
-
 # autocomplete
 ./update-autocomplete.sh $TARGET/loc_pkg/auto-complete
 push-load-path "loc_pkg/auto-complete"
