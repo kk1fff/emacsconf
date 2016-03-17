@@ -16,6 +16,7 @@ function push-load-path {
 function clone-and-add {
     echo "Download $2 from $1"
     git clone "$1" "$2" 2>&1 > /dev/null
+    rm -rf "$2/.git"
     push-load-path "loc_pkg/$2"
 }
 
