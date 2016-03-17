@@ -17,6 +17,7 @@ function clone-and-add {
     echo "Download $2 from $1"
     git clone "$1" "$2" 2>&1 > /dev/null
     rm -rf "$2/.git"
+    find "$2/" -name .gitignore -print0 | xargs -0 rm
     push-load-path "loc_pkg/$2"
 }
 
