@@ -129,7 +129,7 @@
 (eval-after-load "js2-mode"
   '(progn
      (setq js2-missing-semi-one-line-override t)
-     (setq-default js2-basic-offset 2) ; 2 spaces for indentation (if you prefer 2 spaces instead of default 4 spaces for tab)
+     (setq-default js2-basic-offset 4) ; 4 spaces for indentation (if you prefer 2 spaces instead of default 4 spaces for tab)
 
      ;; following is from http://www.emacswiki.org/emacs/Js2Mode
      (add-hook 'js2-post-parse-callbacks 'my-js2-parse-global-vars-decls)
@@ -324,5 +324,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 
-;; remove print keybind.
-(global-set-key (kbd "S-p") nil)
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#010101")
+(set-face-background 'highlight-indentation-current-column-face "#0505ff")
+(add-hook 'prog-mode-hook 'highlight-indentation-mode)
