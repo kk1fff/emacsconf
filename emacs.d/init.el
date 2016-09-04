@@ -90,7 +90,6 @@
                       expand-region
                       rust-mode
                       ibuffer-vc
-                      emacs-eclim
                       popup
                       go-mode
                       scala-mode
