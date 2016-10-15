@@ -8,8 +8,8 @@
  '(secondary-selection ((t (:foreground "black" :background "#8cc4ff"))))
  '(trailing-whitespace ((t (:background "#ef2929"))))
  '(font-lock-builtin-face ((t (:foreground "aquamarine1"))))
- '(font-lock-comment-delimiter-face ((t (:inherit (font-lock-comment-face) :foreground "#B09900" :background "#404040"))))
- '(font-lock-comment-face ((t (:slant italic :foreground "#827100" :background "#404040"))))
+ '(font-lock-comment-delimiter-face ((t (:inherit (font-lock-comment-face) :foreground "#B09900"))))
+ '(font-lock-comment-face ((t (:slant italic :foreground "#00a000"))))
  '(font-lock-constant-face ((t (:foreground "PeachPuff1" :weight bold))))
  '(font-lock-doc-face ((t (:inherit (font-lock-string-face)))))
  '(font-lock-function-name-face ((t (:foreground "SkyBlue1"))))
@@ -35,6 +35,9 @@
  '(query-replace ((t (:foreground "black" :background "white" :inherit (isearch)))))
  '(indent-guide-face ((t (:foreground "gray40"))))
 
+ '(highlight-indentation-face ((t (:background "#e3e3d3"))))
+ '(highlight-indentation-current-column-face ((t (:background "#c3b3b3"))))
+ 
  ;; Mode line
  '(mode-line ((t (:box nil
                   :foreground "gray85"
