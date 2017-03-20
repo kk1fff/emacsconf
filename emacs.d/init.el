@@ -8,23 +8,32 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customize variables
 
-(add-to-list 'exec-path "/usr/local/bin")
-
 (custom-set-variables
-  ; Don't display start-up screen
-  '(inhibit-startup-screen t)
-  ; Recent file
-  '(recentf-max-saved-items 100)
-  ; Highlight color
-  '(highlight-symbol-foreground-color "white")
-  ; Symbol highlight color list
-  '(highlight-symbol-colors
-    '("purple1" "orange4" "SeaGreen4" "medium blue" "saddle brown"
-      "orange red" "magenta" "LavenderBlush4" "blue2" "PaleVioletRed3"
-      "tomato2")))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(highlight-symbol-colors '("purple1"
+                             "orange4"
+                             "SeaGreen4"
+                             "medium blue"
+                             "saddle brown"
+                             "orange red"
+                             "magenta"
+                             "LavenderBlush4"
+                             "blue2"
+                             "PaleVioletRed3"
+                             "tomato2"))
+ '(highlight-symbol-foreground-color "white")
+ '(inhibit-startup-screen t)
+ '(recentf-max-saved-items 100))
+
+;; Theme
+(set-default 'custom-safe-themes t)
+(load-theme 'patrick-local)
 
 ;; Highlight current line
-(global-hl-line-mode 1)
+; (global-hl-line-mode 1)
 
 ;; Show file full path in title bar
 (setq-default frame-title-format
@@ -41,12 +50,12 @@
 (column-number-mode 1)
 
 ;; disable toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; no wrap
-(setq-default truncate-lines t)
+; (setq-default truncate-lines t)
 
 ;; Show line number
 (global-linum-mode 1)
@@ -54,10 +63,6 @@
 ;; Use ibuffer to replace buffer menu.
 (global-set-key "\C-x\C-b" 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
-
-;; Theme
-(set-default 'custom-safe-themes t)
-(load-theme 'patrick-local)
 
 ;; Start server when emacs start-up
 (server-force-delete)
@@ -69,30 +74,43 @@
 (global-semantic-idle-breadcrumbs-mode 1)
 (global-semantic-highlight-func-mode 1)
 (global-semantic-idle-summary-mode 1)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (setq ac-sources '(ac-source-semantic-raw))))
 
 ;; subword mode
 (global-subword-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Init packages
+
 (setq package-enable-at-startup t)
 (package-initialize)
 
 ;; Define the package list.
-(defvar my-packages '(ggtags
-                      js2-mode
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+(defvar my-packages '(
+                      ; Editor features
+                      ggtags
                       rainbow-mode
-                      haskell-mode
-                      lua-mode
                       expand-region
-                      rust-mode
                       ibuffer-vc
+                      exec-path-from-shell
+
+                      ; Ediror-wide frameworks
+                      eclim
                       popup
+                      flycheck
+                      company
+
+                      ; Language support
+                      js2-mode
+                      haskell-mode
+                      rust-mode
                       go-mode
                       scala-mode
+                      lua-mode
                       ))
 
 (let ((init-ed nil))
@@ -100,13 +118,14 @@
     (when (not (package-installed-p p))
       (message "Package %s missing, installing..." p)
       (when (not init-ed)
-        (add-to-list 'package-archives
-                     '("marmalade" . "http://marmalade-repo.org/packages/") t)
-        (add-to-list 'package-archives
-                     '("melpa" . "http://melpa.org/packages/") t)
         (package-refresh-contents)
         (setq init-ed t))
       (package-install p))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Exec-path-from-shell
+(exec-path-from-shell-initialize)
 
 ;; Easy PG
 (require 'epa-file)
@@ -125,11 +144,9 @@
 (require 'recentf)
 (recentf-mode 1)
 
-;; Enable js-mode when opening a jsm file
+;; JS2 mode
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(setq auto-mode-alist (cons '("\\.jsm\\'" . js2-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.sjs\\'" . js2-mode) auto-mode-alist))
 (eval-after-load "js2-mode"
   '(progn
      (setq js2-missing-semi-one-line-override t)
@@ -162,6 +179,7 @@
         (switch-to-buffer buf)))
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
+
 ;; Ace Jump Mode
 (autoload
   'ace-jump-mode
@@ -189,9 +207,9 @@
 (setq popup-kill-ring-interactive-insert t)
 
 ;; autocomplete
-(require 'auto-complete-config)
-(ac-config-default)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+; (require 'auto-complete-config)
+; (ac-config-default)
+; (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 
 ;; ggtags
 (require 'ggtags)
@@ -229,6 +247,28 @@
                     "~"))))
             (ibuffer-do-sort-by-pathname)))
 
+;; Company mode
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; irony-mode
+; (defun my-irony-mode-hook ()
+;   (define-key irony-mode-map [remap completion-at-point]
+;     'irony-completion-at-point-async)
+;   (define-key irony-mode-map [remap complete-symbol]
+;     'irony-completion-at-point-async))
+; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Language specific configurations
+
+;; C-ish
+; (add-hook 'c-mode-common-hook 'irony-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (setq ac-sources '(ac-source-semantic-raw))
+            (setq company-backends '(company-clang))))
+
 ;; Rust
 (require 'rust-mode)
 (autoload 'rust-mode "rust-mode" nil t)
@@ -240,7 +280,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizes that runs after loading extenstions
-
 
 ;; keybinds
 
@@ -332,3 +371,18 @@
 (set-face-background 'highlight-indentation-face "#010101")
 (set-face-background 'highlight-indentation-current-column-face "#0505ff")
 (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq racer-rust-src-path "/Users/kk1fff/opt/rustsrc/rustc-1.12.0/src")
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
+
