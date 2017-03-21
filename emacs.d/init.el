@@ -5,32 +5,15 @@
 (add-to-list 'load-path "~/.emacs.d/loc_pkg/misc")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/loc_themes")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Customize variables
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-symbol-colors '("purple1"
-                             "orange4"
-                             "SeaGreen4"
-                             "medium blue"
-                             "saddle brown"
-                             "orange red"
-                             "magenta"
-                             "LavenderBlush4"
-                             "blue2"
-                             "PaleVioletRed3"
-                             "tomato2"))
- '(highlight-symbol-foreground-color "white")
- '(inhibit-startup-screen t)
- '(recentf-max-saved-items 100))
+; Set to nil if you want to disable those features.
+(defvar feature:jedi-enabled t)
+(defvar feature:racer-enabled t)
 
 ;; Theme
 (set-default 'custom-safe-themes t)
 (load-theme 'patrick-local)
+
+(setq inhibit-startup-screen t)
 
 ;; Highlight current line
 ; (global-hl-line-mode 1)
@@ -104,14 +87,19 @@
                       flycheck
                       company
 
-                      ; Language support
+                      ;; Language supports
                       js2-mode
                       haskell-mode
+
+                      ; Rust
                       rust-mode
                       racer
                       go-mode
                       scala-mode
                       lua-mode
+
+                      ; Python
+                      company-jedi
                       ))
 
 (let ((init-ed nil))
@@ -133,6 +121,18 @@
 (epa-file-enable)
 
 ;; highlight current symbol.
+(setq highlight-symbol-colors '("purple1"
+                                "orange4"
+                                "SeaGreen4"
+                                "medium blue"
+                                "saddle brown"
+                                "orange red"
+                                "magenta"
+                                "LavenderBlush4"
+                                "blue2"
+                                "PaleVioletRed3"
+                                "tomato2"))
+(setq highlight-symbol-foreground-color "white")
 (require 'highlight-symbol)
 
 ;; Markdown
@@ -250,6 +250,7 @@
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0.1)
 
 ;; irony-mode
 ; (defun my-irony-mode-hook ()
@@ -280,16 +281,22 @@
 (require 'rust-mode)
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-  (setq racer-rust-src-path (expand-file-name "~/opt/rustsrc/rust/src"))
-(add-hook 'rust-mode-hook 'racer-mode)
-(add-hook 'racer-mode-hook 'eldoc-mode)
-(add-hook 'racer-mode-hook 'company-mode)
-(define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
-(setq company-tooltip-align-annotations t)
+(setq racer-rust-src-path "/Users/kk1fff/opt/rustsrc/rust/src")
+(when feature:racer-enabled
+  (add-hook 'rust-mode-hook 'racer-mode)
+  (add-hook 'racer-mode-hook 'eldoc-mode)
+  (add-hook 'racer-mode-hook 'company-mode)
+  (define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
+  (setq company-tooltip-align-annotations t))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+;; Python
+(when feature:jedi-enabled
+  (add-hook 'python-mode-hook (lambda ()
+                                (add-to-list 'company-backends 'company-jedi))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizes that runs after loading extenstions
@@ -376,4 +383,3 @@
 (set-face-background 'highlight-indentation-face "#010101")
 (set-face-background 'highlight-indentation-current-column-face "#0505ff")
 (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-
