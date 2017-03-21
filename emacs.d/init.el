@@ -108,6 +108,7 @@
                       js2-mode
                       haskell-mode
                       rust-mode
+                      racer
                       go-mode
                       scala-mode
                       lua-mode
@@ -268,11 +269,23 @@
           (lambda ()
             (setq ac-sources '(ac-source-semantic-raw))
             (setq company-backends '(company-clang))))
+(setq-default basic-offset 4)
+(setq-default tab-width 4)
+(setq-default tab-stop 4)
+(setq-default indent-tabs-mode nil)
+(setq-default js-indent-level 4)
+(c-set-offset 'innamespace 0)
 
 ;; Rust
 (require 'rust-mode)
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+  (setq racer-rust-src-path (expand-file-name "~/opt/rustsrc/rust/src"))
+(add-hook 'rust-mode-hook 'racer-mode)
+(add-hook 'racer-mode-hook 'eldoc-mode)
+(add-hook 'racer-mode-hook 'company-mode)
+(define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -352,16 +365,8 @@
   :group 'iresize)
 (provide 'iresize)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coding style
-
-(setq-default basic-offset 4)
-(setq-default tab-width 4)
-(setq-default tab-stop 4)
-(setq-default indent-tabs-mode nil)
-(setq-default js-indent-level 4)
-(c-set-offset 'innamespace 0)
 
 ;; Use c++-mode as default mode of .h file
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -371,18 +376,4 @@
 (set-face-background 'highlight-indentation-face "#010101")
 (set-face-background 'highlight-indentation-current-column-face "#0505ff")
 (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-(setq racer-rust-src-path "/Users/kk1fff/opt/rustsrc/rustc-1.12.0/src")
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
-(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-(setq company-tooltip-align-annotations t)
-
 
